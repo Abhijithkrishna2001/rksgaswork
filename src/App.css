@@ -55,6 +55,9 @@ nav h2 {
 
 /* HAMBURGER */
 .menu-btn {
+  background-color: #0f172a;
+  color: white;
+  border: none;
   font-size: 28px;
   cursor: pointer;
   display: none;
