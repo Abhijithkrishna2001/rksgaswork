@@ -44,20 +44,27 @@ export default function Contact() {
         body: JSON.stringify(form),
       });
 
-      // ✅ read JSON correctly (NO argument)
-      const data = await res.json();
+      let data = {};
 
-      // ❌ if server returns error
+      try {
+        data = await res.json();
+      } catch {
+        data = {};
+      }
+
       if (!res.ok) {
         throw new Error(data.error || "Server error");
       }
 
-      // ✅ success
       setStatus("✅ Message sent successfully!");
-      setForm({ name: "", phone: "", message: "" });
+      setForm({
+        name: "",
+        phone: "",
+        message: "",
+      });
     } catch (err) {
       console.error(err);
-      setStatus("❌ Email failed. Check backend.");
+      setStatus(err.message || "❌ Email failed");
     } finally {
       setLoading(false);
     }

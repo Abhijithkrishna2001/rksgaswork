@@ -12,9 +12,14 @@ export default function useScrollReveal() {
           }
         });
       },
-      { threshold: 0.15 },
+      { threshold: 0.15 }
     );
 
     reveals.forEach((el) => observer.observe(el));
+
+    return () => {
+      reveals.forEach((el) => observer.unobserve(el));
+      observer.disconnect();
+    };
   }, []);
 }

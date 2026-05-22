@@ -8,9 +8,9 @@ export default function Navbar() {
       <h2>RKS GAS WORKS</h2>
 
       {/* hamburger */}
-      <div className="menu-btn" onClick={() => setOpen(!open)}>
+      <button className="menu-btn" onClick={() => setOpen(!open)}>
         ☰
-      </div>
+      </button>
 
       {/* IMPORTANT: add show class dynamically */}
       <div className={`nav-links ${open ? "show" : ""}`}>
